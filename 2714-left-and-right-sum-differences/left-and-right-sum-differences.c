@@ -6,24 +6,26 @@
 
 int* leftRightDifference(int* nums, int numsSize, int* returnSize) {
     *returnSize = numsSize;
+  
+  int* ans = (int*)malloc(numsSize*sizeof(int));
+  
 
-int* ans= (int*)malloc(numsSize*sizeof(int));
+  int l = 0;
+  int r = 0;
 
-int left = 0;
-int right = 0;
-
+  for(int i=0; i<numsSize;i++){
+    r +=nums[i];
+  }
 for(int i=0;i<numsSize;i++){
-    right += nums[i];
-}
+    r -=nums[i];
+    
+        ans[i] = abs(l-r);
 
-for(int i=0; i<numsSize;i++){
-    right -= nums[i];
-
-    ans[i] = abs(left - right);
-
-    left += nums[i];
+        l +=nums[i];
+  
 }
 
 
-return ans;
+return ans;    
+
 }
